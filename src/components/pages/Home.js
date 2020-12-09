@@ -4,7 +4,7 @@ import { useUserContext } from '../../contexts/userContext'
 import FormError from '../misc/FormError'
 
 const Home = () => {
-  const { error, showError, addItem } = useUserContext()
+  const { userData, error, showError, addItem } = useUserContext()
 
   useEffect(() => {
     showError()
@@ -16,6 +16,9 @@ const Home = () => {
       {
         error.status && <FormError message={error.msg} clearError={() => showError()} />
       }
+      <div className="heading">
+        <h1>Welcome <span>{userData.user && userData.user.displayName}</span></h1>
+      </div>
       <div className="grid">
         {
           products.map(product => {
