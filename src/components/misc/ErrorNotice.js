@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormError = (props) => {
+const ErrorNotice = (props) => {
   return (
     <div className='error-notice'>
       <span>{props.message}</span>
@@ -9,4 +9,4 @@ const FormError = (props) => {
   )
 }
 
-export default FormError
+export default ErrorNotice

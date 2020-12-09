@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import products from '../../fake-products'
 import { useUserContext } from '../../contexts/userContext'
-import FormError from '../misc/FormError'
+import ErrorNotice from '../misc/ErrorNotice'
 
 const Home = () => {
   const { userData, error, showError, addItem } = useUserContext()
@@ -14,10 +14,11 @@ const Home = () => {
   return (
     <div className='page'>
       {
-        error.status && <FormError message={error.msg} clearError={() => showError()} />
+        error.status && <ErrorNotice message={error.msg} clearError={() => showError()} />
       }
       <div className="heading">
-        <h1>Welcome <span>{userData.user && userData.user.displayName}</span></h1>
+        <h1>Welcome <span>{userData.user ? `${userData.user.displayName}, we're glad to see you!` : 'to your one stop shop.'}</span></h1>
+        <p>{userData.user ? "We've added more products since your last visit :)" : "Just login and start adding things to your bag or if you're new here go and register with us. It's free!"}</p>
       </div>
       <div className="grid">
         {

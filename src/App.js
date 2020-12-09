@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useUserContext } from './contexts/userContext'
-import Error from './components/pages/Error';
+import NotFound from './components/pages/NotFound';
 import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -27,7 +27,7 @@ function App() {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/cart' component={Cart} />
-            <Route exact path='*' component={Error} />
+            <Route exact path='*' component={NotFound} />
           </Switch>
         </main>
       </Router>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { useUserContext } from '../../contexts/userContext'
 import { useHistory } from 'react-router-dom'
-import FormError from '../misc/FormError'
+import ErrorNotice from '../misc/ErrorNotice'
 
 const API_DOMAIN = 'https://ash-ecommerce-api.herokuapp.com'
 
@@ -47,7 +47,7 @@ const Register = () => {
     <div className='page'>
       <h2>Register</h2>
       {
-        error.status && <FormError message={error.msg} clearError={() => showError()} />
+        error.status && <ErrorNotice message={error.msg} clearError={() => showError()} />
       }
       <form className='form' onSubmit={handleForm}>
         <label htmlFor="username">Username: </label>

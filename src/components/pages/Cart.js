@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useUserContext } from '../../contexts/userContext'
-import FormError from '../misc/FormError'
+import ErrorNotice from '../misc/ErrorNotice'
 
 
 const Cart = () => {
@@ -13,7 +13,7 @@ const Cart = () => {
   return (
     <div className='page'>
       {
-        error.status && <FormError message={error.msg} clearError={() => showError()} />
+        error.status && <ErrorNotice message={error.msg} clearError={() => showError()} />
       }
       {
         userData.user ? (
@@ -67,7 +67,7 @@ const Cart = () => {
             </footer>
           </section>
         ) : (
-            <div>
+            <div className='cart-login-prompt'>
               <h3>You need to login in order to see your cart.</h3>
             </div>
           )
