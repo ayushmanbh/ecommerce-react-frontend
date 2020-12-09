@@ -4,6 +4,8 @@ import { useUserContext } from '../../contexts/userContext'
 import { useHistory } from 'react-router-dom'
 import FormError from '../misc/FormError'
 
+const API_DOMAIN = 'https://ash-ecommerce-api.herokuapp.com'
+
 const Register = () => {
   const [email, setEmail] = useState()
   const [username, setUserName] = useState()
@@ -23,9 +25,9 @@ const Register = () => {
 
     try {
       const newUser = { username, email, password, passwordCheck }
-      await Axios.post('http://localhost:5000/users/register', newUser)
+      await Axios.post(API_DOMAIN + '/users/register', newUser)
 
-      const loginResponse = await Axios.post('http://localhost:5000/users/login', {
+      const loginResponse = await Axios.post(API_DOMAIN + '/users/login', {
         email, password
       })
 

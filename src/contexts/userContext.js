@@ -1,6 +1,8 @@
 import React, { createContext, useState, useContext, useEffect } from "react"
 import Axios from 'axios'
 
+const API_DOMAIN = 'https://ash-ecommerce-api.herokuapp.com'
+
 const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
@@ -134,11 +136,11 @@ const UserProvider = ({ children }) => {
       token = ''
     }
     try {
-      const tokenResponse = await Axios.post('http://localhost:5000/users/tokenIsValid', null, {
+      const tokenResponse = await Axios.post(API_DOMAIN + '/users/tokenIsValid', null, {
         headers: { 'Authorization': token }
       })
       if (tokenResponse.data) {
-        const userResponse = await Axios.get('http://localhost:5000/users/', {
+        const userResponse = await Axios.get(API_DOMAIN + '/users/', {
           headers: { 'Authorization': 'Bearer ' + token }
         })
 
